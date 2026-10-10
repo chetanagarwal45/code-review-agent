@@ -4,6 +4,7 @@ import json
 OLLAMA_URL = "http://localhost:11434"
 MODEL_NAME = "qwen2.5-coder:7b"
 
+
 class OllamaClient:
     def __init__(self, model: str = MODEL_NAME, base_url: str = OLLAMA_URL):
         self.model = model
@@ -60,3 +61,7 @@ Return ONLY a JSON object with this exact structure:
 Code:
 ```{language}
 {code}
+```
+
+Respond with valid JSON only.
+"""
