@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "name": "code-review-agent",
+  "display_name": "Local Code Review Agent",
+  "description": "Reviews code and GitHub PRs using Qwen2.5‑Coder running locally via Ollama.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "chetanagarwal45",
+  "capabilities": [
+    "code_review",
+    "bug_detection",
+    "security_analysis",
+    "github_pr_review",
+    "auto_labeling"
+  ],
+  "input": {
+    "type": "object",
+    "properties": {
+      "code": {"type": "string"},
+      "pr_url": {"type": "string"},
+      "language": {"type": "string"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "properties": {
+      "bugs": {"type": "array"},
+      "suggestions": {"type": "array"},
+      "security_issues": {"type": "array"},
+      "quality_score": {"type": "number"},
+      "labels": {"type": "array"},
+      "comment": {"type": "string"}
+    }
+  },
+  "endpoints": {
+    "review_code": "POST /review/code",
+    "review_pr": "POST /review/pr",
+    "list_prs": "GET /prs/{owner}/{repo}"
+  },
+  "model": {
+    "name": "qwen2.5-coder",
+    "size": "7b",
+    "provider": "ollama",
+    "local": true,
+    "open_weight": true
+  }
+}
