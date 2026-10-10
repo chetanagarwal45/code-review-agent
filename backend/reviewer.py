@@ -1,6 +1,5 @@
-
 from models.ollama_client import OllamaClient
-import re
+
 
 class CodeReviewer:
     def __init__(self):
@@ -39,7 +38,7 @@ class CodeReviewer:
         added = []
         for line in diff.splitlines():
             if line.startswith("+") and not line.startswith("+++"):
-                added.append(line[1:])   # drop the '+'
+                added.append(line[1:])  # drop the '+'
         code = "\n".join(added)
         # Treat the whole diff as a Python‑like snippet; language detection is optional.
         return self.ollama.review(code, "python")
@@ -77,5 +76,7 @@ class CodeReviewer:
         for sec in review.get("security_issues", []):
             comment += f"- ⚠️ {sec}\n"
 
-        comment += "\n---\n*Reviewed by Local Code Review Agent 🤖 powered by Qwen2.5‑Coder*"
+        comment += (
+            "\n---\n*Reviewed by Local Code Review Agent 🤖 powered by Qwen2.5‑Coder*"
+        )
         return comment
