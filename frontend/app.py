@@ -3,7 +3,9 @@ import httpx
 
 API = "http://localhost:8000"
 
-st.set_page_config(page_title="🤖 Local Code Review Agent", page_icon="🤖", layout="wide")
+st.set_page_config(
+    page_title="🤖 Local Code Review Agent", page_icon="🤖", layout="wide"
+)
 st.title("🤖 Local Code Review Agent")
 st.caption("Powered by Qwen2.5‑Coder running 100 % locally via Ollama")
 
@@ -21,7 +23,9 @@ with st.sidebar:
 # --------------------------------------------------------------
 if mode == "📝 Code snippet":
     st.subheader("📝 Paste Your Code")
-    code = st.text_area("Code to review", height=250, placeholder="Paste your code here...")
+    code = st.text_area(
+        "Code to review", height=250, placeholder="Paste your code here..."
+    )
     filename = st.text_input("Filename (optional)", placeholder="e.g. main.py")
 
     if st.button("🔍 Review Code", type="primary"):

@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()  # pulls values from .env (not committed)
 
+
 class GitHubClient:
     def __init__(self):
         token = os.getenv("GITHUB_TOKEN")
@@ -19,7 +20,7 @@ class GitHubClient:
         pr = repo.get_pull(pr_number)
         diff = ""
         for file in pr.get_files():
-            if file.patch:   # the unified diff for this file
+            if file.patch:  # the unified diff for this file
                 diff += f"\n### File: {file.filename}\n{file.patch}\n"
         return diff
 
@@ -39,7 +40,7 @@ class GitHubClient:
             issue = repo.get_issue(pr_number)
 
             # Ensure labels exist; create if missing
-            existing = {l.name for l in repo.get_labels()}
+            existing = {label.name for label in repo.get_labels()}
             colour_map = {
                 "bug": "d73a4a",
                 "enhancement": "a2eeef",
