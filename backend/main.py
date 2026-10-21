@@ -20,8 +20,9 @@ class CodeReviewRequest(BaseModel):
     code: str
     filename: str = ""
 
+
 class PRReviewRequest(BaseModel):
-    repo_name: str          # e.g. "owner/repo"
+    repo_name: str  # e.g. "owner/repo"
     pr_number: int
     post_comment: bool = True
     add_labels: bool = True

@@ -2,7 +2,8 @@ import httpx
 import json
 from typing import Dict, Any
 
-API_BASE = "http://localhost:8000"   # FastAPI server
+API_BASE = "http://localhost:8000"  # FastAPI server
+
 
 class CodeReviewSkill:
     """Agent Skill: Code Review (Open Standard)"""
